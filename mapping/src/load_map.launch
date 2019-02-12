@@ -1,0 +1,10 @@
+﻿<launch>
+ <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch"/>
+ <node name="map_server" pkg="map_server" type="map_server" args="$(find turtlebot_gazebo)/maps/playground.yaml" />
+ <node name="tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /map /odom 100" />
+
+
+ <include file="$(find turtlebot_rviz_launchers)/launch/view_robot.launch"/>
+ <node name="load_map" pkg="mapping" type="load_map" output="screen" cwd="node" />
+</launch>
+
